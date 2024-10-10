@@ -6,11 +6,9 @@ import rightArrow from "../assets/rightArrow.svg";
 import { useNavigate } from "react-router-dom";
 import { useTime } from "../context/timeContext";
 
-//redirect when submit to analog timer
 const SetTimer = () => {
   const { setTime, timeState } = useTime();
-  // const [startTime, setStartTime] = useState("");
-  // const [endTime, setEndTime] = useState("");
+
   const [paus, setPaus] = useState(false);
   const [interval, setInterval] = useState(false);
   const [minutes, setMinutes] = useState(0);
@@ -21,11 +19,11 @@ const SetTimer = () => {
       return;
     }
     e.preventDefault();
-    const startTime = new Date();
+
     const endTime = new Date();
     endTime.setMinutes(endTime.getMinutes() + minutes);
-    console.log("start, end, paus, minutes", startTime, endTime, paus, minutes);
-    setTime(startTime.toISOString(), endTime.toISOString(), paus);
+    console.log(" end, paus, minutes", endTime, paus, minutes);
+    setTime(endTime.toISOString(), paus, minutes);
     console.log("timestate", timeState);
     navigate("/digital");
   };

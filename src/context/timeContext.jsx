@@ -32,48 +32,47 @@ const getStorage = () => {
 const storage = getStorage();
 
 export const TimeProvider = ({ children }) => {
-  const startTime = storage.getItem("startTime");
   const endTime = storage.getItem("endTime");
   const paus = storage.getItem("paus");
-
+  const minutes = storage.getItem("minutes");
   const [timeState, setTimeState] = useState({
-    startTime,
     endTime,
     paus,
+    minutes,
   });
 
-  const setTime = (startTime, endTime, paus) => {
-    const start = storage.setItem("startTime", startTime);
+  const setTime = (endTime, paus, minutes) => {
+    // const start = storage.setItem("startTime", startTime);
     const end = storage.setItem("endTime", endTime);
     const hasPaus = storage.setItem("paus", paus);
-
+    const setMinutes = storage.setItem("minutes", minutes);
+    console.log(minutes);
     setTimeState({
-      startTime: start,
-      endTime: end,
-      paus: hasPaus,
+      endTime: endTime,
+      paus: paus,
+      minutes: minutes,
     });
   };
 
   const clear = () => {
-    storage.removeItem("startTime");
     storage.removeItem("endTime");
     storage.removeItem("paus");
+    storage.removeItem("minutes");
     setTimeState({
-      startTime: null,
       endTime: null,
       paus: false,
+      minutes: null,
     });
   };
 
   useEffect(() => {
-    const start = storage.getItem("startTime");
     const end = storage.getItem("endTime");
     const hasPaus = storage.getItem("paus");
-
+    const minutes = storage.getItem("minutes");
     setTimeState({
-      startTime: start,
       endTime: end,
       paus: hasPaus,
+      minutes: minutes,
     });
   }, []);
 

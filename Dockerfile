@@ -1,6 +1,6 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
-WORKDIR /react-docker/
+WORKDIR /timer/
 
 COPY package*.json ./
 

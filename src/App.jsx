@@ -1,14 +1,14 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "./pages/home";
-import AnalogTimer from "./pages/AnalogTimer";
-import AlarmView from "./pages/AlarmView";
-import BreakView from "./pages/BreakView";
-import SetTimer from "./pages/SetTimer";
-import DigitalTimer from "./pages/DigitalTimer";
-import Menu from "./components/Menu";
-import { TimeProvider } from "./context/timeContext";
+import Home from "./pages/Home.jsx";
+import AnalogTimer from "./pages/AnalogTimer.jsx";
+import AlarmView from "./pages/AlarmView.jsx";
+import BreakView from "./pages/BreakView.jsx";
+import SetTimer from "./pages/SetTimer.jsx";
+import DigitalTimer from "./pages/DigitalTimer.jsx";
+import Menu from "./components/Menu.jsx";
+import { TimeProvider } from "./context/timeContext.jsx";
 
 function App() {
   return (

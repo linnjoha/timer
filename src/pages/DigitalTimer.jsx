@@ -1,11 +1,12 @@
 import blackLogo from "../assets/blacklogo.svg";
 import Menu from "../components/Menu";
 import { useTime } from "../context/timeContext";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 const DigitalTimer = () => {
   const { timeState, clear } = useTime();
   const endTime = sessionStorage.getItem("endTime");
+  const paus = sessionStorage.getItem("paus");
 
   const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({
@@ -24,11 +25,20 @@ const DigitalTimer = () => {
   const calculateTimeLeft = () => {
     const now = new Date();
     const timeDifference = new Date(endTime) - now;
-
     if (timeDifference <= 0) {
       setIsRunning(false);
-      clear();
-      timeState.paus ? navigate("/break") : navigate("/alarm");
+      if (paus == "true") {
+        console.log(typeof paus, paus);
+        const now = new Date();
+        now.setMinutes(now.getMinutes() + 5);
+        sessionStorage.setItem("pausEnd", now.toISOString());
+        sessionStorage.removeItem("startTime");
+        sessionStorage.removeItem("endTime");
+        navigate("/break");
+      } else {
+        clear();
+        navigate("/alarm");
+      }
       return { minutes: 0, seconds: 0 };
     }
 
@@ -51,22 +61,23 @@ const DigitalTimer = () => {
 
   const handleAbort = () => {
     clear();
+    sessionStorage.removeItem("pausEnd");
     navigate("/settimer");
   };
+
   return (
     <div className="brightStyle wrapper digitalWrapper">
       <header className="header">
         {" "}
-        <img src={blackLogo} alt="logo" />
-        <dialog>
-          <Menu />
-        </dialog>
+        <Link to="/menu">
+          <img src={blackLogo} alt="logo" />
+        </Link>
         <p>interval</p>
       </header>
       <section className="timeSection">
         <h1>
-          {String(timeLeft.minutes).padStart(2, "0")}:
-          {String(timeLeft.seconds).padStart(2, "0")}
+          {timeLeft.minutes ? String(timeLeft.minutes).padStart(2, "0") : "00"}:
+          {timeLeft.seconds ? String(timeLeft.seconds).padStart(2, "0") : "00"}
         </h1>
       </section>
       <button onClick={() => handleAbort()} className="opacityBtn">
