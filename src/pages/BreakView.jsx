@@ -56,11 +56,8 @@ const BreakView = () => {
   const handleAbort = () => {
     sessionStorage.removeItem("pausEnd");
     clear();
-    console.log(typeof savedMinutes);
     const newEndTime = new Date();
-
     newEndTime.setMinutes(newEndTime.getMinutes() + Number(savedMinutes));
-    console.log("newendtime", newEndTime);
     setTime(newEndTime, savedPaus, Number(savedMinutes));
     navigate("/digital");
   };
