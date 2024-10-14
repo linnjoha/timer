@@ -66,7 +66,7 @@ const BreakView = () => {
   };
 
   return (
-    <div className="wrapper darkStlye alarmView ">
+    <div className="wrapper darkStlye alarmView">
       <div className="alarmSection">
         <div className="imgContainer">
           <img src={paus} alt="paus" />

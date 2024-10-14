@@ -1,10 +1,9 @@
 import blackLogo from "../assets/blacklogo.svg";
-import Menu from "../components/Menu";
 import { useTime } from "../context/timeContext";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 const DigitalTimer = () => {
-  const { timeState, clear } = useTime();
+  const { clear } = useTime();
   const endTime = sessionStorage.getItem("endTime");
   const paus = sessionStorage.getItem("paus");
 
