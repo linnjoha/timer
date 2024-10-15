@@ -30,7 +30,7 @@ const SetTimer = () => {
 
   return (
     <div className="brightStyle wrapper">
-      <img src={blackLogo} alt="logo" />
+      <img className="img" src={blackLogo} alt="logo" />
       <dialog>
         <Menu />
       </dialog>

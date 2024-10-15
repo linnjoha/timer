@@ -90,29 +90,27 @@ const AnalogTimer = () => {
         </Link>
         <p>interval</p>
       </header>
-      <div className=" ">
-        <section className="clockSection">
-          <div className="clockContainer">
-            <img src={clock} alt="Clock Face" className="clockFace" />
-            <img
-              src={minutes}
-              alt="Minute Hand"
-              className="minuteHand"
-              style={minuteStyle}
-            />
-            <img
-              src={seconds}
-              alt="Second Hand"
-              className="secondHand"
-              style={secondStyle}
-            />
-          </div>
-        </section>
 
+      <section className="clockSection">
+        <div className="clockContainer">
+          <img src={clock} alt="Clock Face" className="clockFace" />
+          <img
+            src={minutes}
+            alt="Minute Hand"
+            className="minuteHand"
+            style={minuteStyle}
+          />
+          <img
+            src={seconds}
+            alt="Second Hand"
+            className="secondHand"
+            style={secondStyle}
+          />
+        </div>
         <button onClick={() => handleAbort()} className="opacityBtn">
           ABORT TIMER
         </button>
-      </div>
+      </section>
     </div>
   );
 };

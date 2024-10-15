@@ -43,9 +43,6 @@ p {
   justify-content: space-between;
   align-items: flex-start;
   margin: 0;
-  & img {
-    margin: 0.5rem;
-  }
 }
 .displayFlexColumn {
   display: flex;
@@ -70,6 +67,9 @@ p {
   &form {
     align-items: flex-start;
   }
+}
+.img {
+  margin: 1rem;
 }
 .timeSection {
   gap: 2rem;
@@ -157,6 +157,8 @@ button {
   align-self: center;
 }
 .header {
+  padding: 1rem;
+  margin-left: 1rem;
   display: flex;
   align-items: center;
   width: 100%;
@@ -178,6 +180,10 @@ button {
 }
 .clockSection {
   margin-top: 30%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: -webkit-fill-available;
 }
 .clockContainer {
   position: relative;
@@ -190,6 +196,7 @@ button {
   align-items: center;
   color: white;
   & img {
+    margin: 1rem;
     align-self: flex-start;
   }
   background-color: rgb(228, 228, 228, 1);
@@ -210,15 +217,16 @@ button {
 .minuteHand,
 .secondHand {
   position: absolute;
-  left: 50%;
   transform-origin: 50% 100%;
   transform: rotate(0deg);
 }
 .minuteHand {
   top: 13%;
+  left: 45%;
 }
 .secondHand {
-  top: 9%;
+  top: 10.5%;
+  left: 47%;
 }
 
 .linkSection {
